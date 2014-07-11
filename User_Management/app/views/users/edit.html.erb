@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h1>Edit User ID: <%= @user.id %></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-2">
+			<form role="form" action="/user/<%= @user.id %>" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="_method" value="put">
+				<div class="form-group">
+					<label for="first">First Name:</label>
+					<input type="text" name="user[first_name]" placeholder="First Name..." class="form-control" value="<%= @user.first_name %>">
+				</div>
+				<div class="form-group">
+					<label for="last">Last Name:</label>
+					<input type="text" name="user[last_name]" placeholder="Last Name..." class="form-control" value="<%= @user.last_name %>">
+				</div>
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input type="email" name="user[email_address]" placeholder="example@company.com" class="form-control" value="<%= @user.email_address %>">
+				</div>
+				<div class="form-group">
+					<label for="password">Password:</label>
+					<input type="password" name="user[password]" placeholder="Password..." class="form-control" value="<%= @user.password %>">
+				</div>
+				<button type="submit" class="btn btn-warning btn-block btn-lg">Update</button>
+			</form>
+			<br>
+			<a href="/user/<%= @user.id %>" class="btn btn-success">Show</a> | <a href="/users/index" class="btn btn-default">Back</a>
+		</div>
+		<div class="col-md-4">
+			<% @message.each do |message| %>
+				<div class="alert alert-danger" role="alert"><%= message %></div>
+			<% end %>
+		</div>
+	</div>
+</div>
